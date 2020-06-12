@@ -22,7 +22,7 @@ const search = document.querySelector('input')
 
 const messageOne = document.querySelector('#message-one')
 const messageTwo = document.querySelector('#message-two')
-
+const messageThree = document.querySelector("#message-three")
 
 
 weatherForm.addEventListener('submit', (e) => {
@@ -35,6 +35,8 @@ weatherForm.addEventListener('submit', (e) => {
 
     messageOne.textContent = 'Loading'
     messageTwo.textContent = ''
+    messageThree.textContent = ''
+
 
     fetch('/weather?address=' + location).then((response) => {
         response.json().then((data) => {
@@ -45,6 +47,7 @@ weatherForm.addEventListener('submit', (e) => {
                 console.log(data)
                 messageOne.textContent = data.address
                 messageTwo.textContent = data.Temperature
+                messageThree.textContent = data.description
             }
         })
     })
